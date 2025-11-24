@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>ibbe / India's national standard for builders</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+      /* ==================== IBBE DESIGN SYSTEM V6.0 (Polished) ==================== */
+      :root {
+        /* Colors */
+        --bg-page: #F2EFE9; /* Slightly deeper cream for contrast */
+        --bg-card: #FFFFFF; /* Pure white for better lift */
+        --text-main: #121212;
+        --text-sub: #555555; /* Darker gray for readability */
+        --border-color: #121212;
+        
+        /* Accents (Adjusted for aesthetics) */
+        --accent-yellow: #FFD600;
+        --accent-blue: #3B82F6; /* Softer, more harmonious blue */
+        --accent-green: #10B981;
+        --accent-red: #EF4444;
+        --accent-light-blue: #E0F2FE;
+        --accent-light-red: #FEE2E2;
+        --accent-light-yellow: #FEF3C7;
+
+        /* Physics */
+        --border-width: 2px; /* Slightly thinner for elegance */
+        --radius-card: 24px; /* Rounder, friendlier */
+        --radius-btn: 100px; /* Pill shape */
+        --shadow-static: 4px 4px 0px rgba(0,0,0,1); /* Sharp, classic */
+        --shadow-hover: 6px 6px 0px rgba(0,0,0,1);
+        
+        --transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      
+      body {
+        font-family: 'Inter', sans-serif;
+        background: var(--bg-page);
+        color: var(--text-main);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a { text-decoration: none; color: inherit; }
+      ul { list-style: none; }
+
+      /* ==================== TYPOGRAPHY ==================== */
+      h1, h2, h3, h4 { letter-spacing: -0.02em; line-height: 1.1; }
+      
+      .tag {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        padding: 6px 12px;
+        border-radius: 20px;
+        border: 1.5px solid var(--border-color);
+        display: inline-block;
+        margin-bottom: 16px;
+      }
+      .tag-dark { background: var(--text-main); color: var(--bg-card); }
+      .tag-light { background: var(--bg-card); color: var(--text-main); }
+
+      /* ==================== LAYOUT UTILITIES ==================== */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      .section { padding: 100px 0; }
+      
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 32px;
+      }
+
+      .col-4 { grid-column: span 4; }
+      .col-6 { grid-column: span 6; }
+      .col-12 { grid-column: span 12; }
+
+      /* ==================== NAVIGATION ==================== */
+      .nav {
+        position: sticky;
+        top: 24px;
+        z-index: 100;
+        padding: 0 24px;
+        pointer-events: none; /* Let clicks pass through empty areas */
+      }
+      
+      .nav-box {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border: var(--border-width) solid var(--border-color);
+        border-radius: 100px;
+        padding: 12px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        pointer-events: auto;
+        box-shadow: var(--shadow-static);
+      }
+
+      .nav-brand { font-weight: 900; font-size: 20px; letter-spacing: -1px; }
+      .nav-links { display: flex; gap: 32px; font-size: 14px; font-weight: 600; }
+      .nav-links a:hover { text-decoration: underline; }
+      .nav-cta {
+        background: var(--text-main);
+        color: #fff;
+        padding: 10px 24px;
+        border-radius: 100px;
+        font-weight: 600;
+        font-size: 14px;
+        transition: var(--transition);
+      }
+      .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 0 rgba(0,0,0,0.2); }
+
+      /* ==================== COMPONENTS ==================== */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 18px 40px;
+        background: var(--text-main);
+        color: #fff;
+        font-weight: 700;
+        border-radius: var(--radius-btn);
+        border: 2px solid var(--text-main);
+        box-shadow: var(--shadow-static);
+        transition: var(--transition);
+        cursor: pointer;
+        font-size: 16px;
+      }
+      .btn:hover {
+        background: #fff;
+        color: var(--text-main);
+        transform: translate(-2px, -2px);
+        box-shadow: var(--shadow-hover);
+      }
+      .btn-secondary {
+        background: #fff;
+        color: var(--text-main);
+      }
+      .btn-secondary:hover {
+        background: var(--bg-page);
+      }
+
+      .card {
+        background: var(--bg-card);
+        border: var(--border-width) solid var(--border-color);
+        border-radius: var(--radius-card);
+        padding: 40px;
+        box-shadow: var(--shadow-static);
+        transition: var(--transition);
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+      .card:hover {
+        transform: translate(-4px, -4px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .card-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        border: 2px solid var(--border-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 24px;
+        font-weight: 900;
+        font-family: 'JetBrains Mono';
+      }
+
+      /* ==================== MEMORIAL BANNER ==================== */
+      .memorial {
+        background: var(--text-main);
+        color: #fff;
+        padding: 12px;
+        text-align: center;
+        font-size: 13px;
+        font-weight: 500;
+      }
+      .memorial span { opacity: 0.8; }
+
+      /* ==================== HERO SECTION ==================== */
+      .hero {
+        padding: 120px 0 100px 0;
+        text-align: center; /* Centered for beauty/impact */
+      }
+      .hero-headline {
+        font-size: clamp(48px, 5vw, 72px);
+        font-weight: 800;
+        max-width: 900px;
+        margin: 0 auto 32px auto;
+        line-height: 1.05;
+      }
+      .hero-sub {
+        font-size: 20px;
+        color: var(--text-sub);
+        max-width: 600px;
+        margin: 0 auto 48px auto;
+      }
+      .hero-actions { display: flex; gap: 16px; justify-content: center; }
+
+      /* ==================== SECTIONS ==================== */
+      .section-header { margin-bottom: 64px; }
+      .section-title { font-size: 40px; font-weight: 800; margin-bottom: 16px; }
+      .section-desc { font-size: 18px; color: var(--text-sub); max-width: 600px; }
+
+      /* Guide Cards specific styling */
+      .guide-yellow { background: var(--accent-yellow); }
+      .guide-light { background: var(--bg-card); }
+      .guide-tint { background: var(--accent-light-blue); }
+      
+      /* List Items for Ecosystem */
+      .list-item {
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+        padding: 24px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 600;
+        font-size: 18px;
+        transition: 0.2s;
+      }
+      .list-item:hover { padding-left: 16px; color: var(--accent-blue); }
+
+      /* Form */
+      .form-container {
+        max-width: 500px;
+        margin: 0 auto;
+        background: #fff;
+        border-radius: 32px;
+        border: 2px solid var(--border-color);
+        padding: 48px;
+        box-shadow: var(--shadow-static);
+      }
+      .input {
+        width: 100%;
+        padding: 16px 20px;
+        margin-bottom: 20px;
+        border-radius: 12px;
+        border: 2px solid rgba(0,0,0,0.1);
+        font-family: inherit;
+        font-size: 16px;
+        outline: none;
+        transition: 0.2s;
+      }
+      .input:focus { border-color: var(--text-main); }
+
+      /* Footer */
+      footer { border-top: 2px solid rgba(0,0,0,0.05); padding: 80px 0; text-align: center; margin-top: 80px;}
+      .footer-links a { margin: 0 20px; font-weight: 600; }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .grid { grid-template-columns: 1fr; }
+        .col-4, .col-6, .col-12 { grid-column: span 1; }
+        .nav-links { display: none; }
+        .hero-headline { font-size: 40px; }
+        .card { padding: 32px; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- MEMORIAL -->
+    <div class="memorial">
+      <strong>In Memoriam: Wing Commander Namansh Syal.</strong> <span>He lived with honor and died protecting others.</span>
+    </div>
+
+    <!-- NAV -->
+    <div class="nav">
+      <div class="nav-box">
+        <div class="nav-brand">ibbe.</div>
+        <div class="nav-links">
+          <a href="#how-it-works">How it Works</a>
+          <a href="#why-join">Why Join</a>
+          <a href="#library">Library</a>
+          <a href="#news">News</a>
+        </div>
+        <a href="#join" class="nav-cta">Join Network</a>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero container">
+      <div class="tag tag-light">Est. 2025</div>
+      <h1 class="hero-headline">India's national standard for builders.</h1>
+      <p class="hero-sub">
+        ibbe is the national ecosystem where students, schools, and companies meet to shape India's future. Not theory—projects, ventures, and movements.
+      </p>
+      <div class="hero-actions">
+        <a href="#join" class="btn">Join the Network</a>
+        <a href="#library" class="btn btn-secondary">Explore Library</a>
+      </div>
+    </section>
+
+    <!-- GUIDES (RESOURCE LIBRARY) -->
+    <section class="section container" id="library">
+      <div class="grid">
+        <!-- Card 1: Highlight -->
+        <div class="col-4 card guide-yellow">
+          <span class="tag tag-dark" style="background: rgba(0,0,0,0.1); color: #000;">Guide</span>
+          <h3 style="font-size: 24px; font-weight: 800; margin-bottom: auto;">PRODUCTS TO COMPANIES</h3>
+          <div style="margin-top: 32px; font-weight: 600; font-size: 14px;">127 PAGES • DOWNLOAD</div>
+        </div>
+        
+        <!-- Card 2 -->
+        <div class="col-4 card guide-light">
+          <span class="tag tag-light" style="background: #f0f0f0;">Guide</span>
+          <h3 style="font-size: 24px; font-weight: 800; margin-bottom: auto;">FUNDING TO GO THE DISTANCE</h3>
+          <div style="margin-top: 32px; font-weight: 600; font-size: 14px; color: #666;">98 PAGES • DOWNLOAD</div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="col-4 card guide-tint">
+          <span class="tag tag-light" style="background: #fff;">Guide</span>
+          <h3 style="font-size: 24px; font-weight: 800; margin-bottom: auto;">FOUNDER'S DILEMMA</h3>
+          <div style="margin-top: 32px; font-weight: 600; font-size: 14px; color: #004488;">89 PAGES • DOWNLOAD</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- JOURNEY / HOW IT WORKS -->
+    <section class="section container" id="how-it-works">
+      <div class="section-header">
+        <span class="tag tag-dark">Process</span>
+        <h2 class="section-title">The journey from<br>classroom to company.</h2>
+        <p class="section-desc">ibbe is designed to carry you from your first project to your first national venture.</p>
+      </div>
+
+      <div class="grid">
+        <div class="col-6 card">
+          <div class="card-icon" style="background: var(--accent-light-blue); color: var(--accent-blue);">01</div>
+          <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px;">Learn through Action</h3>
+          <p style="color: var(--text-sub);">Every challenge ends in something real — a product, a pitch, a solution.</p>
+        </div>
+        
+        <div class="col-6 card">
+          <div class="card-icon" style="background: var(--accent-light-green); color: var(--accent-green);">02</div>
+          <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px;">Build Your Network</h3>
+          <p style="color: var(--text-sub);">Work alongside peers in schools across continents. Learn from founders.</p>
+        </div>
+
+        <div class="col-6 card">
+          <div class="card-icon" style="background: var(--accent-light-yellow); color: #D97706;">03</div>
+          <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px;">Launch Your Vision</h3>
+          <p style="color: var(--text-sub);">Ideas don't sit on paper here. They move into markets and companies.</p>
+        </div>
+
+        <div class="col-6 card">
+          <div class="card-icon" style="background: var(--accent-light-red); color: var(--accent-red);">04</div>
+          <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px;">Carry the Standard</h3>
+          <p style="color: var(--text-sub);">Every step adds to your IBBE certification — the signal of a world-ready entrepreneur.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY JOIN / 3 COL -->
+    <section class="section" style="background: #fff; border-top: 2px solid rgba(0,0,0,0.05); border-bottom: 2px solid rgba(0,0,0,0.05);" id="why-join">
+      <div class="container">
+        <div class="section-header" style="text-align: center; margin: 0 auto 80px auto;">
+          <span class="tag tag-dark">Value</span>
+          <h2 class="section-title">Why join ibbe?</h2>
+          <p class="section-desc" style="margin: 0 auto;">Value for everyone in the entrepreneurship ecosystem.</p>
+        </div>
+
+        <div class="grid">
+          <div class="col-4">
+            <h3 style="font-size: 24px; font-weight: 800; margin-bottom: 16px;">For Students</h3>
+            <p style="color: var(--text-sub); margin-bottom: 24px;">Bridge the gap between schoolwork and real work. Build a network before graduation.</p>
+            <a href="#" style="font-weight: 700; text-decoration: underline;">Read more</a>
+          </div>
+          
+          <div class="col-4">
+            <h3 style="font-size: 24px; font-weight: 800; margin-bottom: 16px;">For Schools</h3>
+            <p style="color: var(--text-sub); margin-bottom: 24px;">Upgrade curriculum with hands-on entrepreneurship. Get IBBE accreditation.</p>
+            <a href="#" style="font-weight: 700; text-decoration: underline;">Read more</a>
+          </div>
+
+          <div class="col-4">
+            <h3 style="font-size: 24px; font-weight: 800; margin-bottom: 16px;">For Companies</h3>
+            <p style="color: var(--text-sub); margin-bottom: 24px;">Recruit talent trained in the real world. Shape leaders before they enter your workforce.</p>
+            <a href="#" style="font-weight: 700; text-decoration: underline;">Read more</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ECOSYSTEM LIST -->
+    <section class="section container">
+      <div class="grid" style="align-items: center;">
+        <div class="col-4">
+          <span class="tag tag-dark">Ecosystem</span>
+          <h2 class="section-title">Everything you need, inside ibbe.</h2>
+          <p class="section-desc">A PDF from a school in California, a case study from a startup in Singapore, a challenge from Berlin, all in one system.</p>
+        </div>
+        
+        <div class="col-1"></div> <!-- Spacer -->
+
+        <div class="col-6"> <!-- Offset list -->
+          <div class="list-item">
+            <span>Curriculum</span>
+            <span>→</span>
+          </div>
+          <div class="list-item">
+            <span>Labs & Experiments</span>
+            <span>→</span>
+          </div>
+          <div class="list-item">
+            <span>Global Mentorship</span>
+            <span>→</span>
+          </div>
+          <div class="list-item">
+            <span>Network Access</span>
+            <span>→</span>
+          </div>
+          <div class="list-item">
+            <span>Funding Resources</span>
+            <span>→</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MISSION / BANNER -->
+    <section class="container">
+      <div style="background: var(--accent-yellow); border-radius: 32px; padding: 60px; text-align: center; border: 2px solid #000; box-shadow: var(--shadow-static);">
+        <h2 style="font-size: 36px; font-weight: 800; margin-bottom: 16px;">Education. Employment. Empowerment.</h2>
+        <p style="font-weight: 600;">Signed by builders • Verified by markets</p>
+      </div>
+    </section>
+
+    <!-- FORM -->
+    <section class="section container" id="join" style="text-align: center;">
+      <div class="section-header">
+        <h2 class="section-title">Join the network.</h2>
+        <p class="section-desc" style="margin: 0 auto;">The future belongs to those who build.</p>
+      </div>
+      
+      <div class="form-container">
+        <form>
+          <input type="text" class="input" placeholder="Full Name">
+          <input type="email" class="input" placeholder="Email Address">
+          <input type="tel" class="input" placeholder="Phone Number">
+          <button class="btn" style="width: 100%;">Join the Waitlist →</button>
+          <p style="margin-top: 24px; font-size: 13px; color: #888;">
+            By joining, you'll get launch updates. Plus, something cool to tell friends at parties.
+          </p>
+        </form>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container">
+        <div class="footer-links">
+          <a href="#">Twitter</a>
+          <a href="#">Instagram</a>
+          <a href="#">Website</a>
+        </div>
+        <p style="margin-top: 32px; color: #888; font-size: 14px;">© 2025 ibbe hq — made with caffeine and questionable decisions</p>
+      </div>
+    </footer>
+
+  </body>
+</html>

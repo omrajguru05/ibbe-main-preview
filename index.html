@@ -6,29 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
     <style>
-      /* ==================== IBBE DESIGN SYSTEM V6.0 (Polished) ==================== */
+      /* ==================== IBBE DESIGN SYSTEM V6.1 (Responsive) ==================== */
       :root {
         /* Colors */
-        --bg-page: #F2EFE9; /* Slightly deeper cream for contrast */
-        --bg-card: #FFFFFF; /* Pure white for better lift */
+        --bg-page: #F2EFE9;
+        --bg-card: #FFFFFF;
         --text-main: #121212;
-        --text-sub: #555555; /* Darker gray for readability */
+        --text-sub: #555555;
         --border-color: #121212;
         
-        /* Accents (Adjusted for aesthetics) */
+        /* Accents */
         --accent-yellow: #FFD600;
-        --accent-blue: #3B82F6; /* Softer, more harmonious blue */
+        --accent-blue: #3B82F6;
         --accent-green: #10B981;
         --accent-red: #EF4444;
         --accent-light-blue: #E0F2FE;
+        --accent-light-green: #D1FAE5;
         --accent-light-red: #FEE2E2;
         --accent-light-yellow: #FEF3C7;
 
         /* Physics */
-        --border-width: 2px; /* Slightly thinner for elegance */
-        --radius-card: 24px; /* Rounder, friendlier */
-        --radius-btn: 100px; /* Pill shape */
-        --shadow-static: 4px 4px 0px rgba(0,0,0,1); /* Sharp, classic */
+        --border-width: 2px;
+        --radius-card: 24px;
+        --radius-btn: 100px;
+        --shadow-static: 4px 4px 0px rgba(0,0,0,1);
         --shadow-hover: 6px 6px 0px rgba(0,0,0,1);
         
         --transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -42,6 +43,7 @@
         color: var(--text-main);
         line-height: 1.6;
         -webkit-font-smoothing: antialiased;
+        overflow-x: hidden; /* Prevent horizontal scroll */
       }
 
       a { text-decoration: none; color: inherit; }
@@ -74,6 +76,7 @@
 
       .section { padding: 100px 0; }
       
+      /* Desktop Grid: 12 Columns */
       .grid {
         display: grid;
         grid-template-columns: repeat(12, 1fr);
@@ -83,6 +86,7 @@
       .col-4 { grid-column: span 4; }
       .col-6 { grid-column: span 6; }
       .col-12 { grid-column: span 12; }
+      .col-spacer { grid-column: span 1; }
 
       /* ==================== NAVIGATION ==================== */
       .nav {
@@ -90,12 +94,13 @@
         top: 24px;
         z-index: 100;
         padding: 0 24px;
-        pointer-events: none; /* Let clicks pass through empty areas */
+        pointer-events: none;
       }
       
       .nav-box {
         background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
         border: var(--border-width) solid var(--border-color);
         border-radius: 100px;
         padding: 12px 24px;
@@ -119,6 +124,7 @@
         font-weight: 600;
         font-size: 14px;
         transition: var(--transition);
+        white-space: nowrap;
       }
       .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 0 rgba(0,0,0,0.2); }
 
@@ -137,6 +143,7 @@
         transition: var(--transition);
         cursor: pointer;
         font-size: 16px;
+        white-space: nowrap;
       }
       .btn:hover {
         background: #fff;
@@ -185,44 +192,48 @@
       .memorial {
         background: var(--text-main);
         color: #fff;
-        padding: 12px;
+        padding: 12px 20px;
         text-align: center;
         font-size: 13px;
         font-weight: 500;
+        line-height: 1.4;
       }
       .memorial span { opacity: 0.8; }
 
       /* ==================== HERO SECTION ==================== */
       .hero {
         padding: 120px 0 100px 0;
-        text-align: center; /* Centered for beauty/impact */
+        text-align: center;
       }
       .hero-headline {
-        font-size: clamp(48px, 5vw, 72px);
+        font-size: clamp(40px, 6vw, 72px); /* Fluid typography */
         font-weight: 800;
         max-width: 900px;
         margin: 0 auto 32px auto;
         line-height: 1.05;
       }
       .hero-sub {
-        font-size: 20px;
+        font-size: clamp(16px, 4vw, 20px);
         color: var(--text-sub);
         max-width: 600px;
         margin: 0 auto 48px auto;
       }
-      .hero-actions { display: flex; gap: 16px; justify-content: center; }
+      .hero-actions {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        flex-wrap: wrap; /* Allow buttons to wrap on tiny screens */
+      }
 
       /* ==================== SECTIONS ==================== */
       .section-header { margin-bottom: 64px; }
-      .section-title { font-size: 40px; font-weight: 800; margin-bottom: 16px; }
+      .section-title { font-size: clamp(32px, 5vw, 40px); font-weight: 800; margin-bottom: 16px; }
       .section-desc { font-size: 18px; color: var(--text-sub); max-width: 600px; }
 
-      /* Guide Cards specific styling */
       .guide-yellow { background: var(--accent-yellow); }
       .guide-light { background: var(--bg-card); }
       .guide-tint { background: var(--accent-light-blue); }
       
-      /* List Items for Ecosystem */
       .list-item {
         border-bottom: 1px solid rgba(0,0,0,0.1);
         padding: 24px 0;
@@ -232,10 +243,10 @@
         font-weight: 600;
         font-size: 18px;
         transition: 0.2s;
+        cursor: default;
       }
       .list-item:hover { padding-left: 16px; color: var(--accent-blue); }
 
-      /* Form */
       .form-container {
         max-width: 500px;
         margin: 0 auto;
@@ -258,25 +269,67 @@
       }
       .input:focus { border-color: var(--text-main); }
 
-      /* Footer */
       footer { border-top: 2px solid rgba(0,0,0,0.05); padding: 80px 0; text-align: center; margin-top: 80px;}
-      .footer-links a { margin: 0 20px; font-weight: 600; }
+      .footer-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; }
+      .footer-links a { font-weight: 600; }
 
-      /* Responsive */
-      @media (max-width: 768px) {
-        .grid { grid-template-columns: 1fr; }
-        .col-4, .col-6, .col-12 { grid-column: span 1; }
-        .nav-links { display: none; }
-        .hero-headline { font-size: 40px; }
-        .card { padding: 32px; }
+      /* ==================== RESPONSIVE MEDIA QUERIES ==================== */
+      
+      /* Tablet (max-width: 1024px) */
+      @media (max-width: 1024px) {
+        .col-4 { grid-column: span 6; } /* Cards become 2-up */
+        .col-6 { grid-column: span 12; } /* Journey cards become full width */
+        .col-spacer { display: none; } /* Hide spacers */
       }
+
+      /* Mobile Landscape / Small Tablet (max-width: 768px) */
+      @media (max-width: 768px) {
+        .section { padding: 60px 0; }
+        
+        /* Collapse grid to single column */
+        .grid { grid-template-columns: 1fr; gap: 24px; }
+        .col-4, .col-6, .col-12 { grid-column: span 1; }
+        
+        /* Hide navigation links, keep logo and CTA */
+        .nav-links { display: none; }
+        .nav-box { padding: 12px 16px; }
+        
+        .hero { padding: 80px 0 60px 0; }
+        
+        .card { padding: 28px; }
+        
+        .form-container { padding: 32px 24px; }
+        
+        /* Adjust Ecosystem list alignment on mobile */
+        .list-item { font-size: 16px; }
+      }
+
+      /* Mobile Portrait (max-width: 480px) */
+      @media (max-width: 480px) {
+        .container { padding: 0 20px; }
+        
+        .nav { padding: 0 16px; top: 16px; }
+        .nav-brand { font-size: 18px; }
+        .nav-cta { padding: 8px 16px; font-size: 12px; }
+        
+        .btn { width: 100%; padding: 16px 24px; } /* Full width buttons */
+        .hero-actions { flex-direction: column; gap: 12px; }
+        
+        .section-header { margin-bottom: 40px; }
+        
+        /* Stack the footer links */
+        .footer-links { flex-direction: column; gap: 16px; }
+        
+        .memorial { font-size: 12px; }
+      }
+
     </style>
   </head>
   <body>
 
     <!-- MEMORIAL -->
     <div class="memorial">
-      <strong>In Memoriam: Wing Commander Namansh Syal.</strong> <span>He lived with honor and died protecting others.</span>
+      <strong>In Memoriam: Wing Commander Namansh Syal.</strong><br><span>He lived with honor and died protecting others.</span>
     </div>
 
     <!-- NAV -->
@@ -407,9 +460,9 @@
           <p class="section-desc">A PDF from a school in California, a case study from a startup in Singapore, a challenge from Berlin, all in one system.</p>
         </div>
         
-        <div class="col-1"></div> <!-- Spacer -->
+        <div class="col-spacer"></div> <!-- Spacer -->
 
-        <div class="col-6"> <!-- Offset list -->
+        <div class="col-6"> <!-- List -->
           <div class="list-item">
             <span>Curriculum</span>
             <span>→</span>
@@ -437,7 +490,7 @@
     <!-- MISSION / BANNER -->
     <section class="container">
       <div style="background: var(--accent-yellow); border-radius: 32px; padding: 60px; text-align: center; border: 2px solid #000; box-shadow: var(--shadow-static);">
-        <h2 style="font-size: 36px; font-weight: 800; margin-bottom: 16px;">Education. Employment. Empowerment.</h2>
+        <h2 style="font-size: clamp(28px, 4vw, 36px); font-weight: 800; margin-bottom: 16px;">Education. Employment. Empowerment.</h2>
         <p style="font-weight: 600;">Signed by builders • Verified by markets</p>
       </div>
     </section>
